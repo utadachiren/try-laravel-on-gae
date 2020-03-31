@@ -1,0 +1,10 @@
+service: test
+
+runtime: php72
+
+env_variables:
+  ## Put production environment variables here.
+  APP_KEY: base64:fdLyD39BQpwouguzJ7coe6VB2qoFRRturKMKr0oHjbU=
+  APP_STORAGE: /tmp
+  VIEW_COMPILED_PATH: /tmp
+  SESSION_DRIVER: cookie
