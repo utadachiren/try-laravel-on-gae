@@ -20,3 +20,9 @@ docker run --rm -it -v ${PWD}:/app -w /app composer create-project --prefer-dist
 docker run -it --rm -v ${PWD}:/app -w /app composer update
 
 # 5.6 -> 5.7
+# change composer.json and do next
+docker run -it --rm -v ${PWD}:/app -w /app composer update
+
+# 5.7 -> 5.8
+# In another directory do next and copy they
+docker run --rm -it -v ${PWD}:/app -w /app composer create-project --prefer-dist laravel/laravel ./ "5.5.*"
