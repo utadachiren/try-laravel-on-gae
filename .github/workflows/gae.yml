@@ -1,0 +1,32 @@
+# 参考
+# https://github.com/GoogleCloudPlatform/github-actions/blob/master/example-workflows/gae/.github/workflows/app-engine.yml
+
+name: Deploy to Google App Engine
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  setup-build-deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      # Setup and configure gcloud CLI
+      - uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
+        with:
+          version: '286.0.0'
+          project_id: ${{ secrets.PROJECT_ID }}
+          service_account_email: ${{ secrets.SA_EMAIL }}
+          service_account_key: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS}}
+
+      - run: ls -l bootstrap
+      # Deploy App to App Engine
+      - name: Deploy
+        run: |
+          gcloud app deploy
