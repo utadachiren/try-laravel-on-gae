@@ -24,7 +24,7 @@ jobs:
           project_id: ${{ secrets.PROJECT_ID }}
           service_account_email: ${{ secrets.SA_EMAIL }}
           service_account_key: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS}}
-
+      - run: chmod -R 777 bootstrap/cache
       - run: ls -l bootstrap
       # Deploy App to App Engine
       - name: Deploy
